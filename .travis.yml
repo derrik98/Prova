@@ -7,4 +7,4 @@ organization: "derrik98"
 token: "34d17ad6527e67fccdfae0c5070ddc7dba306d9b"
 script:
 - ant build
-- sonar-scanner
+- sonar scanner
