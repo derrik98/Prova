@@ -10,6 +10,15 @@
     <property name="source" value="14"/>
     <path id="Hello.classpath">
         <pathelement location="bin"/>
+        <pathelement location="../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
+    </path>
+    <path id="run.Hello (3).classpath">
+        <path refid="Hello.classpath"/>
+        <pathelement location="../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
+    </path>
+    <path id="run.Hello (4).classpath">
+        <path refid="Hello.classpath"/>
+        <pathelement location="../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -45,5 +54,15 @@
     <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
+    </target>
+    <target name="Hello (3)">
+        <java classname="src.Hello" failonerror="true" fork="yes">
+            <classpath refid="run.Hello (3).classpath"/>
+        </java>
+    </target>
+    <target name="Hello (4)">
+        <java classname="project.Hello" failonerror="true" fork="yes">
+            <classpath refid="run.Hello (4).classpath"/>
+        </java>
     </target>
 </project>
