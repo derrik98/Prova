@@ -1,8 +1,5 @@
 package project;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
-
 public class Operation extends Hello{
 	
 	public static float add(float x, float y) {
