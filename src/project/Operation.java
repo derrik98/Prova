@@ -2,7 +2,7 @@ package project;
 
 public class Operation extends Hello{
 	
-	private final String res = "Result: ";
+	private static final String res = "Result: ";
 	
 	public static float add(float x, float y) {
 		logger.info(res + (x + y));
