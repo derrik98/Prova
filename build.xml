@@ -10,23 +10,23 @@
     <property name="source" value="14"/>
     <path id="Operation.classpath">
         <pathelement location="bin"/>
-        <pathelement location="../../../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
+        <pathelement location="../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
     </path>
     <path id="run.Calculate.classpath">
         <path refid="Operation.classpath"/>
-        <pathelement location="../../../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
+        <pathelement location="../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
     </path>
     <path id="run.Hello (3).classpath">
         <path refid="Operation.classpath"/>
-        <pathelement location="../../../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
-    </path>
-    <path id="run.Hello (4).classpath">
-        <path refid="Operation.classpath"/>
-        <pathelement location="../../../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
+        <pathelement location="../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
     </path>
     <path id="run.Operation.classpath">
         <path refid="Operation.classpath"/>
-        <pathelement location="../../../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
+        <pathelement location="../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
+    </path>
+    <path id="run.Calculate (4).classpath">
+        <path refid="Operation.classpath"/>
+        <pathelement location="../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -73,14 +73,14 @@
             <classpath refid="run.Hello (3).classpath"/>
         </java>
     </target>
-    <target name="Hello (4)">
-        <java classname="project.Hello" failonerror="true" fork="yes">
-            <classpath refid="run.Hello (4).classpath"/>
-        </java>
-    </target>
     <target name="Operation">
         <java classname="project.Operation" failonerror="true" fork="yes">
             <classpath refid="run.Operation.classpath"/>
+        </java>
+    </target>
+    <target name="Calculate (4)">
+        <java classname="project.Calculate" failonerror="true" fork="yes">
+            <classpath refid="run.Calculate (4).classpath"/>
         </java>
     </target>
 </project>
