@@ -3,22 +3,30 @@
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="Hello">
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="Operation">
     <property environment="env"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="14"/>
     <property name="source" value="14"/>
-    <path id="Hello.classpath">
+    <path id="Operation.classpath">
         <pathelement location="bin"/>
-        <pathelement location="../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
+        <pathelement location="../../../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
+    </path>
+    <path id="run.Calculate.classpath">
+        <path refid="Operation.classpath"/>
+        <pathelement location="../../../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
     </path>
     <path id="run.Hello (3).classpath">
-        <path refid="Hello.classpath"/>
-        <pathelement location="../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
+        <path refid="Operation.classpath"/>
+        <pathelement location="../../../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
     </path>
     <path id="run.Hello (4).classpath">
-        <path refid="Hello.classpath"/>
-        <pathelement location="../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
+        <path refid="Operation.classpath"/>
+        <pathelement location="../../../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
+    </path>
+    <path id="run.Operation.classpath">
+        <path refid="Operation.classpath"/>
+        <pathelement location="../../../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -38,7 +46,7 @@
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
             <src path="src"/>
-            <classpath refid="Hello.classpath"/>
+            <classpath refid="Operation.classpath"/>
         </javac>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
@@ -55,6 +63,11 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
+    <target name="Calculate">
+        <java classname="project.Calculate" failonerror="true" fork="yes">
+            <classpath refid="run.Calculate.classpath"/>
+        </java>
+    </target>
     <target name="Hello (3)">
         <java classname="src.Hello" failonerror="true" fork="yes">
             <classpath refid="run.Hello (3).classpath"/>
@@ -63,6 +76,11 @@
     <target name="Hello (4)">
         <java classname="project.Hello" failonerror="true" fork="yes">
             <classpath refid="run.Hello (4).classpath"/>
+        </java>
+    </target>
+    <target name="Operation">
+        <java classname="project.Operation" failonerror="true" fork="yes">
+            <classpath refid="run.Operation.classpath"/>
         </java>
     </target>
 </project>
