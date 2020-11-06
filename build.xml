@@ -3,30 +3,13 @@
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="Operation">
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="Example">
     <property environment="env"/>
     <property name="debuglevel" value="source,lines,vars"/>
-    <property name="target" value="14"/>
-    <property name="source" value="14"/>
-    <path id="Operation.classpath">
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="Example.classpath">
         <pathelement location="bin"/>
-        <pathelement location="../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
-    </path>
-    <path id="run.Calculate.classpath">
-        <path refid="Operation.classpath"/>
-        <pathelement location="../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
-    </path>
-    <path id="run.Hello (3).classpath">
-        <path refid="Operation.classpath"/>
-        <pathelement location="../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
-    </path>
-    <path id="run.Operation.classpath">
-        <path refid="Operation.classpath"/>
-        <pathelement location="../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
-    </path>
-    <path id="run.Calculate (4).classpath">
-        <path refid="Operation.classpath"/>
-        <pathelement location="../../Downloads/BasicLog4jExample/BasicLog4jExample/lib/log4j-1.2.15.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -46,7 +29,7 @@
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
             <src path="src"/>
-            <classpath refid="Operation.classpath"/>
+            <classpath refid="Example.classpath"/>
         </javac>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
@@ -63,24 +46,14 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="Calculate">
+    <target name="javaFX (1)">
+        <java classname="project.javaFX" failonerror="true" fork="yes">
+            <classpath refid="Example.classpath"/>
+        </java>
+    </target>
+    <target name="Calculate (1)">
         <java classname="project.Calculate" failonerror="true" fork="yes">
-            <classpath refid="run.Calculate.classpath"/>
-        </java>
-    </target>
-    <target name="Hello (3)">
-        <java classname="src.Hello" failonerror="true" fork="yes">
-            <classpath refid="run.Hello (3).classpath"/>
-        </java>
-    </target>
-    <target name="Operation">
-        <java classname="project.Operation" failonerror="true" fork="yes">
-            <classpath refid="run.Operation.classpath"/>
-        </java>
-    </target>
-    <target name="Calculate (4)">
-        <java classname="project.Calculate" failonerror="true" fork="yes">
-            <classpath refid="run.Calculate (4).classpath"/>
+            <classpath refid="Example.classpath"/>
         </java>
     </target>
 </project>
