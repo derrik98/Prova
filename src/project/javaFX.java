@@ -1,15 +1,21 @@
 package project;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
+//import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class javaFX extends Application{
+public class JavaFX extends Application{
+	
+	public static final Logger logger = Logger.getLogger(Calculate.class);
 	
 	Label label1;
 	Button button1;
@@ -24,7 +30,8 @@ public class javaFX extends Application{
 	public void start(Stage stage) throws Exception{
 		stage.setTitle("Prima prova");
 		label1 = new Label("la mia prma prova");
-		VBox root = new VBox();
+		HBox root = new HBox();
+		//VBox root1 = new VBox();
 		
 		Scene scene = new Scene(root, 500, 500);
 		stage.setScene(scene);
@@ -33,14 +40,16 @@ public class javaFX extends Application{
 		button1.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
-			public void handle(ActionEvent arg0) {
-				System.out.println("ciao");
+			public void handle(ActionEvent event) {
+				BasicConfigurator.configure();
+				logger.info("ciao");
+				//System.out.println("ciao");
 				label1.setText("Try" + i);
 				i++;
 			}
 		});
 		
-		root.getChildren().addAll(label1, button1);
+		root.getChildren().addAll(button1, label1);
 		stage.show();
 	}
 

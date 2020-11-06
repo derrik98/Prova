@@ -56,4 +56,9 @@
             <classpath refid="Example.classpath"/>
         </java>
     </target>
+    <target name="JavaFX">
+        <java classname="project.JavaFX" failonerror="true" fork="yes">
+            <classpath refid="Example.classpath"/>
+        </java>
+    </target>
 </project>
